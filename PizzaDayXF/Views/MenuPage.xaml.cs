@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PizzaDayXF.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,13 +14,16 @@ namespace PizzaDayXF
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MenuPage : ContentPage
 	{
-        private readonly MenuViewModel _viewModel = new MenuViewModel();
+        private readonly MenuViewModel _viewModel;
 	    private readonly int _restaurantId;
 
-	    public MenuPage(int restaurantId)
+	    public MenuPage(Restaurant restaurant)
 	    {
-	        _restaurantId = restaurantId;
+	        _restaurantId = restaurant.RestaurantId;
 	        InitializeComponent();
+	        this.Title = "Menü — " + restaurant.Name;
+
+            _viewModel = new MenuViewModel(Navigation, restaurant);
             this.BindingContext = _viewModel;
 	    }
 
@@ -30,10 +33,5 @@ namespace PizzaDayXF
             loadingInformation.IsVisible = false;
             menuItemList.IsVisible = true;
 	    }
-
-	    private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
-	    {
-	        Console.WriteLine("Tapped.");
-        }
 	}
 }

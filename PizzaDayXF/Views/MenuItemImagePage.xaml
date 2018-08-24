@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaDayXF.MenuItemImagePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Image x:Name="image" HorizontalOptions="FillAndExpand"/>
+        <StackLayout BackgroundColor="#feeac8">
+            <Frame BorderColor="Orange" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image x:Name="image" HeightRequest="150" WidthRequest="150" Margin="-15"/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

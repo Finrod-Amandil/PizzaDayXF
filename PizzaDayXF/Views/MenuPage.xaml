@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaDayXF.MenuPage"
-             Title="Menü — Dieci">
+             x:Name="ParentContext">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#feeac8">
             <StackLayout x:Name="loadingInformation" VerticalOptions="CenterAndExpand">
@@ -12,14 +12,16 @@
             <ListView x:Name="menuItemList" ItemsSource="{Binding MenuItems}" HasUnevenRows="True" RowHeight="-1" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell IsEnabled="False">
+                        <ViewCell>
                             <ViewCell.View>
                                 <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
                                     <StackLayout Orientation="Horizontal" Margin="-20">
                                         <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
                                             <Image Source="{Binding ImageUri}" Margin="-15">
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                                                    <TapGestureRecognizer 
+                                                            Command="{Binding Path=BindingContext.ImageTappedCommand, Source={x:Reference ParentContext}}" 
+                                                            CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                 </Image.GestureRecognizers>
                                                 <Image.HeightRequest>
                                                     <OnPlatform x:TypeArguments="x:Double">

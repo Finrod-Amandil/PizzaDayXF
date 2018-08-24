@@ -12,10 +12,11 @@ namespace PizzaDayXF
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MenuItemImagePage : ContentPage
 	{
-		public MenuItemImagePage (string imageSource)
+		public MenuItemImagePage(Models.MenuItem menuItem)
 		{
 			InitializeComponent ();
-		    image.Source = imageSource;
+		    image.Source = menuItem.ImageUri;
+		    this.Title = menuItem.Name;
 		}
 	}
 }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaDayXF.RestaurantListPage"
+             Title="Restaurants"
              x:Name="ParentContext">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#feeac8">
@@ -16,8 +17,8 @@
                             <ViewCell.View>
                                 <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
                                     <StackLayout Orientation="Horizontal" Margin="-20">
-                                        <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
-                                            <Image Source="{Binding ImageUri}" Margin="-19" VerticalOptions="CenterAndExpand">
+                                        <Frame BorderColor="Orange" BackgroundColor="Orange" VerticalOptions="Start">
+                                            <Image Source="{Binding ImageUri}" Margin="-18" VerticalOptions="CenterAndExpand">
                                                 <Image.HeightRequest>
                                                     <OnPlatform x:TypeArguments="x:Double">
                                                         <On Platform="Android" Value="60" />
@@ -42,7 +43,7 @@
                                         </Label>
                                         <Button Text="Menü anzeigen" 
                                                 Command="{Binding Path=BindingContext.RedirectCommand, Source={x:Reference ParentContext}}" 
-                                                CommandParameter="{Binding RestaurantId}"
+                                                CommandParameter="{Binding .}"
                                                 VerticalOptions="CenterAndExpand"
                                                 HorizontalOptions="EndAndExpand"></Button>
                                     </StackLayout>

@@ -27,7 +27,7 @@ namespace PizzaDayXF.ViewModels
         public RestaurantListViewModel(INavigation navigation)
         {
             Navigation = navigation;
-            RedirectCommand = new Command<int>(Redirect);
+            RedirectCommand = new Command<Restaurant>(Redirect);
         }
 
         public async Task LoadRestaurants()
@@ -47,9 +47,9 @@ namespace PizzaDayXF.ViewModels
             Restaurants = new ObservableCollection<Restaurant>(_restaurants);
         }
 
-        private async void Redirect(int restaurantId)
+        private async void Redirect(Restaurant restaurant)
         {
-            await Navigation.PushAsync(new MenuPage(restaurantId));
+            await Navigation.PushAsync(new MenuPage(restaurant));
         }
     }
 }
