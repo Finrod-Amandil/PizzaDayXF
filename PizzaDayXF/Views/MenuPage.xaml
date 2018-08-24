@@ -17,16 +17,49 @@
                                 <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
                                     <StackLayout Orientation="Horizontal" Margin="-20">
                                         <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
-                                            <Image Source="{Binding ImageUri}" WidthRequest="60" HeightRequest="60" Margin="-15">
+                                            <Image Source="{Binding ImageUri}" Margin="-15">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
                                                 </Image.GestureRecognizers>
+                                                <Image.HeightRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="60" />
+                                                        <On Platform="UWP" Value="100" />
+                                                    </OnPlatform>
+                                                </Image.HeightRequest>
+                                                <Image.WidthRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="60" />
+                                                        <On Platform="UWP" Value="100" />
+                                                    </OnPlatform>
+                                                </Image.WidthRequest>
                                             </Image>
                                         </Frame>
                                         <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" Padding="0,5,5,0">
-                                            <Label TextColor="Black" Text="{Binding Name}"></Label>
-                                            <Label Text="{Binding Description}" FontSize="10" FontAttributes="Italic"></Label>
-                                            <Label Text="{Binding VariationString}" FontSize="8"></Label>
+                                            <Label TextColor="Black" Text="{Binding Name}">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="12" />
+                                                        <On Platform="UWP" Value="18" />
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label Text="{Binding Description}" FontAttributes="Italic">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="10" />
+                                                        <On Platform="UWP" Value="16" />
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Label Text="{Binding VariationString}">
+                                                <Label.FontSize>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="10" />
+                                                        <On Platform="UWP" Value="14" />
+                                                    </OnPlatform>
+                                                </Label.FontSize>
+                                            </Label>
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>

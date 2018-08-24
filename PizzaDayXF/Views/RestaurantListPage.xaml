@@ -17,9 +17,29 @@
                                 <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
                                     <StackLayout Orientation="Horizontal" Margin="-20">
                                         <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
-                                            <Image Source="{Binding ImageUri}" WidthRequest="60" HeightRequest="60" Margin="-19" VerticalOptions="CenterAndExpand"></Image>
+                                            <Image Source="{Binding ImageUri}" Margin="-19" VerticalOptions="CenterAndExpand">
+                                                <Image.HeightRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="60" />
+                                                        <On Platform="UWP" Value="100" />
+                                                    </OnPlatform>
+                                                </Image.HeightRequest>
+                                                <Image.WidthRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="60" />
+                                                        <On Platform="UWP" Value="100" />
+                                                    </OnPlatform>
+                                                </Image.WidthRequest>
+                                            </Image>
                                         </Frame>
-                                        <Label TextColor="Black" Text="{Binding Name}" VerticalOptions="Center"></Label>
+                                        <Label TextColor="Black" Text="{Binding Name}" VerticalOptions="Center">
+                                            <Label.FontSize>
+                                                <OnPlatform x:TypeArguments="x:Double">
+                                                    <On Platform="Android" Value="12" />
+                                                    <On Platform="UWP" Value="18" />
+                                                </OnPlatform>
+                                            </Label.FontSize>
+                                        </Label>
                                         <Button Text="Menü anzeigen" 
                                                 Command="{Binding Path=BindingContext.RedirectCommand, Source={x:Reference ParentContext}}" 
                                                 CommandParameter="{Binding RestaurantId}"
