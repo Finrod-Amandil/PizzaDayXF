@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaDayXF.RestaurantListPage"
+             x:Name="ParentContext">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#feeac8">
+            <StackLayout x:Name="loadingInformation" VerticalOptions="CenterAndExpand">
+                <Label Text="Restaurants werden geladen..." HorizontalOptions="Center"></Label>
+                <ActivityIndicator IsRunning="True" Color="Orange"></ActivityIndicator>
+            </StackLayout>
+            <ListView x:Name="restaurantList" ItemsSource="{Binding Restaurants}" HasUnevenRows="True" RowHeight="-1" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
+                                    <StackLayout Orientation="Horizontal" Margin="-20">
+                                        <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
+                                            <Image Source="{Binding ImageUri}" WidthRequest="60" HeightRequest="60" Margin="-19" VerticalOptions="CenterAndExpand"></Image>
+                                        </Frame>
+                                        <Label TextColor="Black" Text="{Binding Name}" VerticalOptions="Center"></Label>
+                                        <Button Text="Menü anzeigen" 
+                                                Command="{Binding Path=BindingContext.RedirectCommand, Source={x:Reference ParentContext}}" 
+                                                CommandParameter="{Binding RestaurantId}"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="EndAndExpand"></Button>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaDayXF.MenuPage"
+             Title="Menü — Dieci">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#feeac8">
+            <StackLayout x:Name="loadingInformation" VerticalOptions="CenterAndExpand">
+                <Label Text="Menü wird geladen..." HorizontalOptions="Center"></Label>
+                <ActivityIndicator IsRunning="True" Color="Orange"></ActivityIndicator>
+            </StackLayout>
+            <ListView x:Name="menuItemList" ItemsSource="{Binding MenuItems}" HasUnevenRows="True" RowHeight="-1" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <ViewCell.View>
+                                <Frame BorderColor="Orange" Margin="4" BackgroundColor="Wheat">
+                                    <StackLayout Orientation="Horizontal" Margin="-20">
+                                        <Frame BorderColor="Orange" BackgroundColor="White" VerticalOptions="Start">
+                                            <Image Source="{Binding ImageUri}" WidthRequest="60" HeightRequest="60" Margin="-15">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Frame>
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" Padding="0,5,5,0">
+                                            <Label TextColor="Black" Text="{Binding Name}"></Label>
+                                            <Label Text="{Binding Description}" FontSize="10" FontAttributes="Italic"></Label>
+                                            <Label Text="{Binding VariationString}" FontSize="8"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
